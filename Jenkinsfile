@@ -1,15 +1,25 @@
 pipeline {
   agent any
+
+  environment{
+    RELEASE='20.4'
+  }
+
   stages {
-    stage('Stage 1') {
+    stage('Build') {
+    agent any
+    environment {
+        LOG_LEVEL= 'IFNO'
+    }
       steps {
-      echo "This is build $BUILD_NUMBER of demo $DEMO"
-        sh '''
-            echo "Using a multi-line shell step"
-            chmod +x test.sh
-            ./test.sh
-        '''
+        echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
       }
+    }
+
+    stage('Test'){
+        steps{
+            echo "Testing. I can see release ${RELEASE}, but not log level ${LOG_LEVEL}"
+        }
     }
 
   }

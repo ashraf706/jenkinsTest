@@ -13,7 +13,9 @@ pipeline {
       parallel {
                       stage('linux-arm64') {
                           steps {
+                          script{
                                 someVar = "hello world"
+                          }
                               echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
                           }
                       }

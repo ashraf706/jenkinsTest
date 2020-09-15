@@ -3,6 +3,7 @@ pipeline {
 
   environment{
     RELEASE='20.4'
+    someVar
   }
 
   stages {
@@ -13,11 +14,13 @@ pipeline {
       parallel {
                       stage('linux-arm64') {
                           steps {
+                          someVar = "hello world"
                               echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
                           }
                       }
                       stage('linux-amd64') {
                           steps {
+                          echo "value of someVar = ${someVar}"
                               echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
                           }
                       }

@@ -1,4 +1,4 @@
-someVar
+myVAr
 
 pipeline {
   agent any
@@ -16,14 +16,14 @@ pipeline {
                       stage('linux-arm64') {
                           steps {
                           script{
-                                someVar = "hello world"
+                                myVAr = "hello world"
                           }
                               echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
                           }
                       }
                       stage('linux-amd64') {
                           steps {
-                                echo "value of someVar = ${someVar}"
+                                echo "value of myVAr = ${myVAr}"
                                 echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
                           }
                       }

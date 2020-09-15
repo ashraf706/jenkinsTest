@@ -1,4 +1,5 @@
 someVar
+
 pipeline {
   agent any
 
